@@ -1,5 +1,8 @@
 {
   "name": "tech-stack-javascript-nodejs",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "jshint": "^2.5.11"
+  }
 }
