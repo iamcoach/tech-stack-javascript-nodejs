@@ -1,6 +1,6 @@
 {
   "esnext": true,
-  "broswer": false,
+  "browser": false,
   "node": true,
   "mocha": true
 }
