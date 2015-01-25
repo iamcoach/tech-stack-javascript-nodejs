@@ -27,6 +27,12 @@ gulp.task('default', ['generate-tmp'], function() {
   });
 });
 
+gulp.task('test', ['generate-tmp'], function() {
+  exec('node_modules/mocha/bin/mocha -c -R landing tmp/test/**/*.js', function(error, stdout, stderr) {
+    sys.puts(stdout);
+  });
+});
+
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.js', ['generate-tmp']);
+  gulp.watch('src/**/*.js', ['test']);
 });
