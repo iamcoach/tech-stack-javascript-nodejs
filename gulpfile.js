@@ -26,3 +26,7 @@ gulp.task('default', ['generate-tmp'], function() {
     sys.puts(stdout);
   });
 });
+
+gulp.task('watch', function() {
+  gulp.watch('src/**/*.js', ['generate-tmp']);
+});
