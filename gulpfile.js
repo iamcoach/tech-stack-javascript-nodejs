@@ -1,38 +1,16 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var exec = require('child_process').exec;
-var to5 = require('gulp-6to5');
-var sys = require('sys');
-
+var babel = require('gulp-babel');
 
 gulp.task('clean-dist', function() {
   return gulp.src('dist', { read: false })
     .pipe(clean({ force: true }));
 });
 
-gulp.task('clean-tmp', function() {
-  return gulp.src('tmp', { read: false })
-    .pipe(clean({ force: true }));
-});
-
-gulp.task('generate-tmp', ['clean-tmp'], function() {
+gulp.task('generate-dist', ['clean-dist'], function() {
   return gulp.src('src/**/*.js')
-    .pipe(to5())
-    .pipe(gulp.dest('tmp'));
+    .pipe(babel())
+    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['generate-tmp'], function() {
-  exec('node tmp/main/app.js', function(error, stdout, stderr) {
-    sys.puts(stdout);
-  });
-});
-
-gulp.task('test', ['generate-tmp'], function() {
-  exec('node_modules/mocha/bin/mocha -c -R landing tmp/test/**/*.js', function(error, stdout, stderr) {
-    sys.puts(stdout);
-  });
-});
-
-gulp.task('watch', function() {
-  gulp.watch('src/**/*.js', ['test']);
-});
