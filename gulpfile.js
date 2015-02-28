@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-var exec = require('child_process').exec;
 var babel = require('gulp-babel');
 
 gulp.task('clean-dist', function() {
