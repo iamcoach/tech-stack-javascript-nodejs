@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "babel-node src/main/app.js",
-    "debug": "babel-node --debug src/main/app.js",
+    "debug": "babel-node debug src/main/app.js",
     "test": "jshint ./gulpfile.js ./src/* && mocha --compilers js:babel/register ./src/test/*"
   },
   "devDependencies": {
